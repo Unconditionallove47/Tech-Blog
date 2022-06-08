@@ -9,7 +9,7 @@ router.get("/",(req,res)=>{
         console.log("==========")
         console.log(hbsBlogs)
         const loggedIn = req.session.user?true:false
-        res.render("home",{blogs:hbsBlogs,loggedIn,username:req.session.user?.username})
+        res.render("home",{blogs:hbsBlogs,loggedIn,username:req.session.user.username})
     })
 })
 
