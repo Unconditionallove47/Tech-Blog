@@ -4,17 +4,27 @@ const sequelize = require('../config/connection');
 class Blog extends Model {}
 
 Blog.init({
-    // add properites here, ex:
-    title: {
+    name: {
          type: DataTypes.STRING,
          allowNull:false
     },
     body: {
-        type:DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull:false
-    }
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'user',
+            key: 'id'
+        }
+   }
 },{
-    sequelize
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'blog',
 });
 
-module.exports=Blog
+module.exports = Blog;

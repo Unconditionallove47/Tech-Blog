@@ -5,17 +5,16 @@ const bcrypt = require("bcrypt")
 class User extends Model {}
 
 User.init({
-    // add properites here, ex:
     username: {
          type: DataTypes.STRING,
          allowNull:false,
-         unique:true
+         unique:true,
     },
-    password:{
+    password: {
         type:DataTypes.STRING,
         allowNull:false,
         validate:{
-            len:[8]
+            len:[8, 128]
         }
     }
 },{
@@ -26,6 +25,10 @@ User.init({
         }
     },
     sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'user',
 });
 
-module.exports=User
+module.exports = User

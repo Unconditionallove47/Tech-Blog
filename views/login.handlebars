@@ -1,13 +1,30 @@
-<h2>Login</h2>
-<form action="" id="login">
-    <input type="text" placeholder="username" id="loginUsername">
-    <input type="password" placeholder="password" id="loginPassword" >
-    <button>Login!</button>
-</form>
-<h2>Signup</h2>
-<form action="" id="signup">
-    <input type="text" placeholder="username" id="signupUsername">
-    <input type="password" placeholder="password" id="signupPassword" >
-    <button>Signup!</button>
-</form>
+<div class="col-12">
+    {{!-- headline --}}
+    <h1 class="text-center">Login</h1>
+
+    {{!-- login form --}}
+    <container class="row justify-content-center">
+
+        <form id="loginSubmit">
+
+            <div class="m-3">
+                {{!-- <label for="usernameInput">Username</label> --}}
+                <span class="label label-default text-light">username</span>
+                <input id="usernameInput" type="text" class="form-control" name="usernameInput">
+            </div>
+
+            <div class="m-3">
+                <span class="label label-default text-light">password</span>
+                <input id="passwordInput" type="password" class="form-control" name="passwordInput">
+            </div>
+
+            <div class="text-center p-3">
+                <button type="submit" class="btn btn-light">Submit</button>
+            </div>
+
+        </form>
+
+    </container>
+</div>
+{{!-- link script --}}
 <script src="/js/login.js"></script>

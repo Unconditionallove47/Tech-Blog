@@ -1,39 +1,47 @@
 const express = require('express');
 const router = express.Router();
-const {User,Blog} = require('../models');
+const { User, Blog } = require('../models');
 
-router.get("/",(req,res)=>{
-    Blog.findAll().then(blogs=>{
-        console.log(blogs)
-        const hbsBlogs = blogs.map(blog=>blog.get({plain:true}))
-        console.log("==========")
-        console.log(hbsBlogs)
-        const loggedIn = req.session.user?true:false
-        res.render("home",{blogs:hbsBlogs,loggedIn,username:req.session.user.username})
+//loads home page
+router.get("/", async (req, res) => {
+    const blogData = await Blog.findAll().catch((err) => {
+        res.json(err);
     })
-})
+    const loggedIn = req.session.user ? true : false;
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+    res.render("home", { blogs, loggedIn, username: req.session.user?.username });
+});
 
-router.get("/login",(req,res)=>{
-    if(req.session.user){
-        return res.redirect("/profile")
+// signup route
+router.get("/signup", (req, res) => {
+
+    if (req.session.user) {
+        return res.redirect("/");
+    };
+
+    res.render("signup");
+});
+
+//loads login page
+router.get("/login", (req, res) => {
+    if (req.session.user) {
+        return res.redirect("/");
     }
-    res.render("login")
-})
+    res.render("login");
+});
 
-router.get("/profile",(req,res)=>{
-    if(!req.session.user){
+//loads user profile
+router.get("/profile", (req, res) => {
+    if (!req.session.user) {
         return res.redirect("/login")
     }
-    User.findByPk(req.session.user.id,{
-        include:[Blog]
-    }).then(userData=>{
-        console.log(userData);
-        const hbsData = userData.get({plain:true})
-        console.log("=======")
-        console.log(hbsData);
-        hbsData.loggedIn = req.session.user?true:false
-        res.render("profile",hbsData)
-    })
-})
+    User.findByPk(req.session.user.id, {
+        include: { all: true, nested: true }
+    }).then(userData => {
+        const hbsData = userData.get({ plain: true })
+        hbsData.loggedIn = req.session.user ? true : false
+        res.render("profile", hbsData)
+    });
+});
 
 module.exports = router;
