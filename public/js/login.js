@@ -5,7 +5,7 @@ document.querySelector("#loginSubmit").addEventListener("submit", e => {
         password: document.querySelector("#passwordInput").value,
     }
     console.log(userObj)
-    fetch("/api/users/login", {
+    fetch("controllers/api/users/login", {
         method: "POST",
         body: JSON.stringify(userObj),
         headers: {
@@ -15,7 +15,7 @@ document.querySelector("#loginSubmit").addEventListener("submit", e => {
         if (res.ok) {
             location.href = "/"
         } else {
-            alert("Oh NO")
+            alert("Oh NO problerm with login")
         }
     })
 })

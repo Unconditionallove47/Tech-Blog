@@ -47,7 +47,7 @@ const comments = [
     }
 ]
 
-const seed = async () => {
+const seeds = async () => {
 
     try {
         await sequelize.sync({ force: true });
@@ -63,4 +63,4 @@ const seed = async () => {
 
 };
 
-seed();
+seeds();

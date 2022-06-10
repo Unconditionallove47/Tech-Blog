@@ -9,7 +9,7 @@ submitNewBlog.addEventListener("click", e => {
     };
 
     console.log("========================", blogObject);
-    fetch("/api/blog", {
+    fetch("controllers/api/blog", {
         method: "POST",
         body: JSON.stringify(blogObject),
         headers: {
@@ -19,7 +19,7 @@ submitNewBlog.addEventListener("click", e => {
         if (res.ok) {
             location.reload();
         } else {
-            alert("Post error, please try again.");
+            alert("Post error!");
         };
     })
 })
@@ -32,7 +32,7 @@ addNewComment.addEventListener("click", e => {
         body: document.querySelector("#newCommentBody")
     }
 
-    fetch("/api/comments", {
+    fetch("controllers/api/comments", {
         method: "POST",
         body: JSON.stringify(commentObject),
         headers: {
@@ -42,7 +42,7 @@ addNewComment.addEventListener("click", e => {
         if (res.ok) {
             location.reload();
         } else {
-            alert("Post error, please try again.");
+            alert("Post error!");
         };
     })
 })
