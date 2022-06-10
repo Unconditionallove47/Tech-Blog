@@ -9,17 +9,13 @@
     "seed": "node seeds/index.js",
     "start":"node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Rufasa85/sess-auth.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Rufasa85/sess-auth/issues"
+  
   },
-  "homepage": "https://github.com/Rufasa85/sess-auth#readme",
+  
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.3",

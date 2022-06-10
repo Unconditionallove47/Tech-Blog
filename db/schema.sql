@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS fake_tumblr_db;
-CREATE DATABASE fake_tumblr_db;
+DROP DATABASE IF EXISTS blog_db;
+CREATE DATABASE blog_db;
