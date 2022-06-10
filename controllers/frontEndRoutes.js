@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     })
     const loggedIn = req.session.user ? true : false;
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
-    res.render("home", { blogs, loggedIn, username: req.session.user?.username });
+    res.render("home", { blogs, loggedIn, username: req.session.user.username });
 });
 
 // signup route
