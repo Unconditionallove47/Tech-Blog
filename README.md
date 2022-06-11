@@ -16,7 +16,7 @@ Use the command "NPM I" to install any necessary dependencies.
 ## Usage
 for blogging!.
 ## Contributions
-Joe!.
+Joe's setup files, beau and dominick from askBCS!
 ## Tests
 Stay up to date on tests as needed. To run tests, please use "no".
 ## License
