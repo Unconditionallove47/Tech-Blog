@@ -3,7 +3,7 @@ const sequelize = require('../../config/connection');
 const bcrypt = require('bcrypt');
 const { User } = require('../../models');
 
-// GET all users
+// all users
 router.get("/", (req, res) => {
 
     User.findAll({
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 
 });
 
-//add a new user
+//add user
 router.post("/", (req, res) => {
     User.create(req.body)
         .then(newUser => {

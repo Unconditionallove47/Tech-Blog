@@ -2,7 +2,7 @@ const { Blog } = require('../../models');
 const withAuth = require('../../utils/auth');
 const router = require('express').Router();
 
-//get all blogs
+//gets blogs
 router.get("/", (req, res) => {
   Blog.findAll({
     include: { all: true, nested: true }
@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
     });
 });
 
-//get one blog
+//single blog grab
 router.get("/:id", (req, res) => {
   Blog.findByPk(req.params.id, {})
     .then(dbBlogs => {
@@ -28,7 +28,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-//add a new blog
+//adds blog
 router.post("/", (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ msg: "You need to login to post a Blog!" })
@@ -47,7 +47,7 @@ router.post("/", (req, res) => {
     });
 });
 
-//update a Blog
+//UPDATE
 router.put("/:id", (req, res) => {
   Blog.update(req.body, {
     where: {
@@ -62,7 +62,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-//delete a blog
+//DELETE (null)
 router.delete('/:id', (req, res) => {
   Blog.destroy({
     where: {

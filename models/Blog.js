@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Blog extends Model {}
-
+//make sure you set up correctly!!
 Blog.init({
    name: {
          type: DataTypes.STRING,

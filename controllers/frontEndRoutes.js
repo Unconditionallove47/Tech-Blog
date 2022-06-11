@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { User, Blog } = require('../models');
 
-//loads home page
+//home page
 router.get("/", async (req, res) => {
     const blogData = await Blog.findAll().catch((err) => {
         res.json(err);
@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     res.render("home", { blogs, loggedIn, username: req.session.user?.username });
 });
 
-// signup route
+// signup
 router.get("/signup", (req, res) => {
 
     if (req.session.user) {
@@ -22,7 +22,7 @@ router.get("/signup", (req, res) => {
     res.render("signup");
 });
 
-//loads login page
+//loads login 
 router.get("/login", (req, res) => {
     if (req.session.user) {
         return res.redirect("/");
@@ -30,7 +30,7 @@ router.get("/login", (req, res) => {
     res.render("login");
 });
 
-//loads user profile
+//loads profile
 router.get("/profile", (req, res) => {
     if (!req.session.user) {
         return res.redirect("/login")

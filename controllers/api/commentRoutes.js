@@ -2,7 +2,7 @@ const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 const router = require('express').Router();
 
-//get all comments
+// all comments
 router.get("/", (req, res) => {
   Comment.findAll({
     include: { all: true, nested: true }
@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
     });
 });
 
-//get one comment
+// one comment
 router.get("/:id", (req, res) => {
   Comment.findByPk(req.params.id, {})
     .then(dbComments => {
@@ -28,7 +28,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-//add a new comment
+//add comment
 router.post("/", (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ msg: "You need to login to post a Comment!" })
@@ -47,7 +47,7 @@ router.post("/", (req, res) => {
     });
 });
 
-//update a comment
+//updatecomment
 router.put("/:id", (req, res) => {
   Comment.update(req.body, {
     where: {
@@ -62,7 +62,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-//delete a comment
+//deletes comment
 router.delete('/:id', (req, res) => {
   Comment.destroy({
     where: {
