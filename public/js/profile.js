@@ -24,25 +24,3 @@ submitNewBlog.addEventListener("click", e => {
     })
 })
 
-const addNewComment = document.querySelector("#addComment");
-addNewComment.addEventListener("click", e => {
-    e.preventDefault();
-
-    const commentObject = {
-        body: document.querySelector("#newCommentBody")
-    }
-
-    fetch("controllers/api/comments", {
-        method: "POST",
-        body: JSON.stringify(commentObject),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(res => {
-        if (res.ok) {
-            location.reload();
-        } else {
-            alert("Post error!");
-        };
-    })
-})
