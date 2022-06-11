@@ -13,7 +13,14 @@ router.get("/", async (req, res) => {
 });
 
 // signup route
+router.get("/signup", (req, res) => {
 
+    if (req.session.user) {
+        return res.redirect("/");
+    };
+
+    res.render("signup");
+});
 
 //loads login page
 router.get("/login", (req, res) => {
