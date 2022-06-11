@@ -1,5 +1,5 @@
-// document.querySelector("#signupSubmit").addEventListener("submit", e => {
-//     e.preventDefault();
+document.querySelector("#signupSubmit").addEventListener("submit", e => {
+    e.preventDefault();
     const userObj = {
         username: document.querySelector("#usernameInput").value,
         password: document.querySelector("#passwordInput").value,
@@ -18,4 +18,4 @@
             alert("Error Signing Up")
         }
     })
-// })
+})
