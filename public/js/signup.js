@@ -1,5 +1,5 @@
-document.querySelector("#signupSubmit").addEventListener("submit", e => {
-    e.preventDefault();
+// document.querySelector("#signupSubmit").addEventListener("submit", e => {
+//     e.preventDefault();
     const userObj = {
         username: document.querySelector("#usernameInput").value,
         password: document.querySelector("#passwordInput").value,
@@ -15,7 +15,7 @@ document.querySelector("#signupSubmit").addEventListener("submit", e => {
         if (res.ok) {
             location.href = "/"
         } else {
-            alert("trumpet sound")
+            alert("Error Signing Up")
         }
     })
-})
+// })

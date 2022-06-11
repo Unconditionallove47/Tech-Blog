@@ -9,7 +9,7 @@ submitNewBlog.addEventListener("click", e => {
     };
 
     console.log("========================", blogObject);
-    fetch("controllers/api/blog", {
+    fetch("/api/blog", {
         method: "POST",
         body: JSON.stringify(blogObject),
         headers: {
